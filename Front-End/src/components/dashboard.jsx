@@ -1,8 +1,43 @@
 import React, { Component } from 'react';
-import {Container,Row, Col, Button, Form, FormGroup, Label, Input, FormText,Card, CardBody, CardTitle, CardText, CardImg} from 'reactstrap';
+import {Container,Row, Col, Button, Form, FormGroup, Label, Input,Card, CardBody, CardTitle, CardText} from 'reactstrap';
 import "./css/dashboard.css";
+import Select from 'react-select';
+import FormField from './formfield';
+import {Route} from 'react-router-dom';
+
+
+const options = [
+  { value: "C++",   label: "C++" },
+  { value: "C",   label: "C"},
+  { value: "C#",   label: "C#"},
+  { value: "Java",   label: "Java"},
+  { value: "Python",   label: "Python"},
+  { value: "Javascript",   label: "Javascript"},
+  { value: "Web Development",   label: "Web Development"},
+  { value: "R",   label: "R"}
+];
+
+const formatOptionLabel = ({ value, label, customAbbreviation }) => (
+  <div style={{ display: "flex" }}>
+    <div>{label}</div>
+    <div style={{ marginLeft: "10px", color: "#ccc" }}>
+      {customAbbreviation}
+    </div>
+  </div>
+);
+
 
 class Dashboard extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { inputs: ['input-0'] };
+  }
+
+  appendInput() {
+    var newInput = `form-${this.state.inputs.length}`;
+    this.setState(prevState => ({ inputs: prevState.inputs.concat([newInput]) }));
+}
 
     render() {
         return (
@@ -49,10 +84,7 @@ class Dashboard extends Component {
             <FormGroup row>
               <Label for="exampleEmail" sm={2}>Skills</Label>
               <Col sm={10}>
-              <Input
-                type="exampletext"
-                placeholder="Skills"
-              />
+              <Select isMulti placeholder="Add" formatOptionLabel={formatOptionLabel} options={options}/>
               </Col>
             </FormGroup>
 
@@ -74,55 +106,22 @@ class Dashboard extends Component {
       <Row>
         <h1 id="subheader">Projects</h1>
       </Row>
-      <Row xs="1" sm="2" md="4">
-        <Col>   <Card>
-        <CardImg top width="100%" src="/assets/318x180.svg" alt="Project-Image" />
-        <CardBody>
-          <CardTitle>Project Title</CardTitle>
-          <CardText>Write a short note about your awesome projects</CardText>
-          <CardText>
-            <small className="text-muted">Click to know more!!</small>
-          </CardText>
-        </CardBody>
-      </Card></Col>
-        <Col>   <Card>
-        <CardImg top width="100%" src="/assets/318x180.svg" alt="Project-Image" />
-        <CardBody>
-          <CardTitle>Project Title</CardTitle>
-          <CardText>Write a short note about your awesome projects</CardText>
-          <CardText>
-            <small className="text-muted">Click to know more!!</small>
-          </CardText>
-        </CardBody>
-      </Card></Col>
-        <Col>   <Card>
-        <CardImg top width="100%" src="/assets/318x180.svg" alt="Project-Image" />
-        <CardBody>
-          <CardTitle>Project Title</CardTitle>
-          <CardText>Write a short note about your awesome projects</CardText>
-          <CardText>
-            <small className="text-muted">Click to know more!!</small>
-          </CardText>
-        </CardBody>
-      </Card></Col>
-        <Col>   <Card>
-        <CardImg top width="100%" src="/assets/318x180.svg" alt="Project-Image" />
-        <CardBody>
-          <CardTitle>Project Title</CardTitle>
-          <CardText>Write a short note about your awesome projects</CardText>
-          <CardText>
-            <small className="text-muted">Click to know more!!</small>
-          </CardText>
-        </CardBody>
-      </Card></Col>
-      </Row>
-
+      <div>
+               {/* <Form>
+                   <div id="dynamicInput">
+                       {this.state.inputs.map(input => <Input key={input} />)}
+                   </div>
+               </Form>
+               <button onClick={ () => this.appendInput() }>
+                   CLICK ME TO ADD AN INPUT
+               </button> */}
+               <Route component={FormField} />
+            </div>
       <Row>
         <h1 id="subheader">Internships</h1>
       </Row>
       <Row xs="1" sm="2" md="4">
         <Col>   <Card>
-        <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image" />
         <CardBody>
           <CardTitle>Title</CardTitle>
           <CardText>Write a short note about your internship</CardText>
@@ -132,7 +131,6 @@ class Dashboard extends Component {
         </CardBody>
       </Card></Col>
         <Col>   <Card>
-        <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image" />
         <CardBody>
           <CardTitle>Title</CardTitle>
           <CardText>Write a short note about your internship</CardText>
@@ -142,7 +140,6 @@ class Dashboard extends Component {
         </CardBody>
       </Card></Col>
         <Col>   <Card>
-        <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image" />
         <CardBody>
           <CardTitle>Title</CardTitle>
           <CardText>Write a short note about your internship</CardText>
@@ -152,7 +149,6 @@ class Dashboard extends Component {
         </CardBody>
       </Card></Col>
         <Col>   <Card>
-        <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image" />
         <CardBody>
           <CardTitle>Title</CardTitle>
           <CardText>Write a short note about your internship</CardText>
@@ -168,7 +164,6 @@ class Dashboard extends Component {
       </Row>
       <Row xs="1" sm="2" md="4">
         <Col>   <Card>
-        <CardImg top width="100%" src="/assets/318x180.svg" alt="Demo" />
         <CardBody>
           <CardText>
             <small className="text-muted">Click to know more!!</small>
@@ -176,7 +171,6 @@ class Dashboard extends Component {
         </CardBody>
       </Card></Col>
         <Col>   <Card>
-        <CardImg top width="100%" src="/assets/318x180.svg" alt="Demo" />
         <CardBody>
           <CardText>
             <small className="text-muted">Click to know more!!</small>
@@ -184,7 +178,6 @@ class Dashboard extends Component {
         </CardBody>
       </Card></Col>
         <Col>   <Card>
-        <CardImg top width="100%" src="/assets/318x180.svg" alt="Demo" />
         <CardBody>
           <CardText>
             <small className="text-muted">Click to know more!!</small>
@@ -192,7 +185,6 @@ class Dashboard extends Component {
         </CardBody>
       </Card></Col>
         <Col>   <Card>
-        <CardImg top width="100%" src="/assets/318x180.svg" alt="Demo" />
         <CardBody>
           <CardText>
             <small className="text-muted">Click to know more!!</small>
