@@ -3,7 +3,8 @@ import "./App.css";
 import Login from "./components/login";
 import Signup from "./components/signup";
 import Dashboard from "./components/dashboard";
-import {Navbar, Row,Col} from 'reactstrap';
+import {Navbar} from 'reactstrap';
+import Editor from './components/editor';
 import { BrowserRouter,Route, Link } from "react-router-dom";
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
         <Link to="/login">Login</Link>
         <Link to="/signup">SignUp</Link>
         <Link to="/dashboard">Dashboard</Link>
+        <Link to="/editor">Editor</Link>
+
       </div>
     </Navbar>
     {/* <Row>
@@ -24,6 +27,7 @@ function App() {
       {/* </Col>
       </Row> */}
       <Route component={Dashboard} path="/dashboard" />
+      <Route component={Editor} path="/editor" />
     </BrowserRouter>
   );
 }

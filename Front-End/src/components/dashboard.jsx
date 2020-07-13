@@ -3,7 +3,7 @@ import {Container,Row, Col, Button, Form, FormGroup, Label, Input,Card, CardBody
 import "./css/dashboard.css";
 import Select from 'react-select';
 import FormField from './formfield';
-import {Route} from 'react-router-dom';
+import {Route, Link} from 'react-router-dom';
 
 
 const options = [
@@ -158,40 +158,7 @@ class Dashboard extends Component {
         </CardBody>
       </Card></Col>
       </Row>
-
-      <Row>
-        <h1 id="subheader">Templates</h1>
-      </Row>
-      <Row xs="1" sm="2" md="4">
-        <Col>   <Card>
-        <CardBody>
-          <CardText>
-            <small className="text-muted">Click to know more!!</small>
-          </CardText>
-        </CardBody>
-      </Card></Col>
-        <Col>   <Card>
-        <CardBody>
-          <CardText>
-            <small className="text-muted">Click to know more!!</small>
-          </CardText>
-        </CardBody>
-      </Card></Col>
-        <Col>   <Card>
-        <CardBody>
-          <CardText>
-            <small className="text-muted">Click to know more!!</small>
-          </CardText>
-        </CardBody>
-      </Card></Col>
-        <Col>   <Card>
-        <CardBody>
-          <CardText>
-            <small className="text-muted">Click to know more!!</small>
-          </CardText>
-        </CardBody>
-      </Card></Col>
-      </Row>
+      
           </Container>
 
           </Container>
